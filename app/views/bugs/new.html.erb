@@ -22,8 +22,11 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %></br>
+    <%= f.label :expected_outcome %>
+    <%= f.text_area :expected_outcome, class: 'form-control' %></br>
+
+    <%= f.label :actual_outcome %>
+    <%= f.text_area :actual_outcome, class: 'form-control' %></br>
 
     <%= f.submit "Report a Bug", class: "btn btn-primary" %>
     <% end %>

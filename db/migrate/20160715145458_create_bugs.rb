@@ -3,7 +3,7 @@ class CreateBugs < ActiveRecord::Migration[5.0]
     create_table :bugs do |t|
       t.string :title
       t.text :description
-      t.string :status, default: 'Reported'
+      t.string :status, default: 'reported'
 
       t.timestamps
     end

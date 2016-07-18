@@ -1,0 +1,28 @@
+<div id="bug_report">
+  <h1>Bug Report</h1>
+
+  <table id="bug_table">
+    <tr>
+      <td><b>Title:</b> <%= @bug.title %></td>
+      <td><b>Screenshot of Problem</b></td>
+    </tr>
+    <tr>
+      <td><b>Status:</b> <%= @bug.status %></td>
+    </tr>
+    <tr>
+      <td><b>Reporter:</b> <%= User.find(@bug.user_id).name %></td>
+    </tr>
+    <tr>
+      <td><b>Expected Outcome:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.expected_outcome%></td>
+    </tr>
+    <tr>
+      <td><b>Actual Outcome:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.actual_outcome%></td>
+    </tr>
+  </table>
+</div>

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160718104357) do
   create_table "bugs", force: :cascade do |t|
     t.string   "title"
     t.text     "expected_outcome"
-    t.string   "status",           default: "Reported"
+    t.string   "status",           default: "reported"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.integer  "user_id"

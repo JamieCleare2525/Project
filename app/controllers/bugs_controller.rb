@@ -11,6 +11,10 @@ class BugsController < ApplicationController
     redirect_to new_bug_path
   end
 
+  def show
+    @bug = Bug.find(params[:id])
+  end
+
   def create
     @bug = Bug.new(bug_params)
     @bug.user = current_user
@@ -41,6 +45,6 @@ class BugsController < ApplicationController
   private
 
   def bug_params
-    params.require(:bug).permit(:title, :description, :status)
+    params.require(:bug).permit(:title, :expected_outcome, :actual_outcome, :status)
   end
 end

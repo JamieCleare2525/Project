@@ -4,55 +4,37 @@
 </div>
 <div id="bugs">
   <!--<%= button_to "New Bug", new_bug_path, method: :get %>-->
-  <%= link_to new_bug_path do %>
+
   <div id="new_bug">
+    <%= link_to new_bug_path do %>
     <div id="bug_press">
-    <i class="fa fa-bug" aria-hidden="true" style="font-size:48px;"></i>
-    <p> New Bug </p>
+      <i class="fa fa-bug" aria-hidden="true" style="font-size:48px;"></i>
+      <p> New Bug </p>
+    </div>
+    <% end %>
   </div>
-  </div>
-  <% end %>
   <div id="reported_bugs">
     <h2>Reported Bugs</h2>
     <% if @bugs.any?%>
 
     <% @bugs.each do |b| %>
-    <div class="bug_post">
-      <table class="bug_list">
-        <tr>
-          <td><p><b>Title:</b> <%= b.title%></p></td>
-          <td><p><b>Reporter:</b> <%= User.find(b.user_id).name%></p></td>
-        </tr>
-        <tr>
-          <td><p><b>Status:</b> <%= b.status%></p></td>
-        </tr>
-        <tr>
-          <td colspan="2"><p><b>Description:</b> </td></tr>
-            <tr>
-              <td colspan="2"><%= b.description%></p></td>
-            </tr>
-            <tr>
-              <td>
-              <% if current_user.role == 'bug manager' %>
-              <%= link_to 'Edit', edit_bug_path(b) %>
-                <% end %>
-                <% if current_user.name == User.find(b.user_id).name %>
-                <%= link_to 'Delete', bug_path(b),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-                <% end %>
-              </td>
-              </tr>
-            </table>
-          </div>
-          <% end %>
+    <%=render 'bug_loop', b: b %>
+    <% end %>
 
-        </div>
-        <div id="your_bugs">
-          <h2>Your Bugs</h2>
-        </div>
-        <% end %>
-      </div>
-      <% else %>
-      <h1>Please Register or Sign In</h1>
-      <% end %>
+  </div>
+  <div id="your_bugs">
+    <h2>Your Bugs</h2>
+    <% if @bugs.any?%>
+
+    <% @bugs.each do |b| %>
+    <% if current_user.name == User.find(b.user_id).name%>
+    <%=render 'bug_loop', b: b %>
+    <% end %>
+    <% end %>
+    <%end%>
+  </div>
+  <% end %>
+</div>
+<% else %>
+<h1>Please Register or Sign In</h1>
+<% end %>

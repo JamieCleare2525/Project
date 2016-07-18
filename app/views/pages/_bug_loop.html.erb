@@ -1,0 +1,36 @@
+<div class="bug_post <%= b.status %>">
+  <table class="bug_list">
+    <tr>
+      <td><p><b>Title:</b> <%= link_to bug_path(b) do%><%= b.title%><% end %></p> </td>
+      <td><p><b>Reporter:</b> <%= User.find(b.user_id).name%></p></td>
+    </tr>
+    <tr>
+      <td><p><b>Status:</b> <%= b.status%></p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><p><b>Expected Outcome:</b> </td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= b.expected_outcome%></p></td>
+      </tr>
+      <tr>
+        <td colspan="2"><p><b>Actual Outcome:</b> </td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= b.actual_outcome%></p></td>
+        </tr>
+        <tr>
+          <td>
+            <!--<%= link_to 'Show', bug_path(b) %>-->
+            <% if current_user.role == 'bug manager' %>
+            <%= link_to 'Edit', edit_bug_path(b) %>
+            <% end %>
+            <% if current_user.name == User.find(b.user_id).name %>
+            <%= link_to 'Delete', bug_path(b),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
