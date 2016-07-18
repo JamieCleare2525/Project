@@ -6,27 +6,40 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://use.fontawesome.com/403414f39b.js"></script>
 </head>
 
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!--<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>-->
 
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+  <ul class="nav navbar-nav navbar-right">
+  <% if current_user %>
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+  <% else %>
+
+  <li><%= link_to 'Login', new_user_session_path %></li>
+  <% end %>
+</ul>
+</nav>
+</div>
+</header>
+
+
+<div class="container">
   <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %> alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <%= value %>
   </div>
   <% end %>
-
-  <% if current_user %>
-  <%= link_to 'Edit Profile',edit_user_registration_path %>
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% else %>
-
-  <%= link_to 'Login', new_user_session_path %>
-  <% end %>
-
   <%= yield %>
+</div>
 </body>
 </html>

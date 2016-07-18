@@ -1,0 +1,40 @@
+<h1>Edit Bug</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for :bug, url: bug_path(@bug), method: :patch do |f| %>
+
+    <% if @bug.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@bug.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @bug.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+
+    <!--<%= f.label :status %>
+    <%= f.text_field :status, class: 'form-control' %>-->
+
+    <%= f.label :status %>
+    <%= f.select :status, [['Reported', 'reported'], ['Resolved','resolved'],
+     ['Assigned', 'assigned'], ['Waiting', 'waiting'] ]%>
+
+
+
+    <%= f.submit "Report a Bug", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
