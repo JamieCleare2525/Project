@@ -13,6 +13,15 @@
     </div>
     <% end %>
   </div>
+  <div id="filter_bugs">
+    <h2>Bug Filter</h2>
+    <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= select_tag 'search',
+    options_for_select(["", "reported", "assigned", "waiting", "resolved"],
+    params[:search]) %>
+    <%= submit_tag "Search" %>
+    <% end %>
+  </div>
   <div id="reported_bugs">
     <h2>Reported Bugs</h2>
     <% if @bugs.any?%>

@@ -106,9 +106,11 @@ p {
 #report_bug{
   width: 200px;
   height: 200px;
+  float: left;
   text-align: center;
   background-color: #ccf5ff;
   border-radius: 10px;
+  margin-right: 160px;
 }
 
 #report_bug p{
@@ -152,4 +154,10 @@ input, textarea, select, .uneditable-input {
 
 #bug_table td{
   width: 50%;
+}
+
+#filter_bugs{
+  width:50%;
+  float: left;
+  margin:auto;
 }

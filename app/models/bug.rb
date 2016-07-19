@@ -9,6 +9,10 @@ class Bug < ApplicationRecord
   validates :user_id, presence: true
   validate :picture_size
 
+  def self.search(search)
+    where("status LIKE ?", "%#{search}%")
+  end
+
   private
 
   # Validates the size of an uploaded picture.
