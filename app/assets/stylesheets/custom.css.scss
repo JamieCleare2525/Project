@@ -57,6 +57,20 @@ p {
   text-align: right;
 }
 
+#login_controls{
+  margin:auto;
+  width: 700px;
+}
+
+.login_buttons{
+  width: 300px;
+  height: 100px;
+  float:left;
+  margin: 20px;
+  font-size: 20px;
+
+}
+
 .bug_post{
   width: 350px;
   display: inline-block;

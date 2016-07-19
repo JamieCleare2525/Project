@@ -46,4 +46,9 @@
 </div>
 <% else %>
 <h1>Please Register or Sign In</h1>
+<div id="login_controls">
+<%= button_to "Sign Up", new_user_registration_path, :class => 'btn-primary login_buttons', method: :get %>
+<%= button_to "Login", new_user_session_path, :class => 'btn-primary login_buttons', method: :get %>
+</div>
+
 <% end %>
