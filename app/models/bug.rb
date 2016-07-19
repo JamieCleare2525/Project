@@ -10,7 +10,7 @@ class Bug < ApplicationRecord
   validate :picture_size
 
   def self.search(search)
-    where("status LIKE ?", "%#{search}%")
+    where('status LIKE ?', "%#{search}%")
   end
 
   private

@@ -1,14 +1,25 @@
 <div id="bug_report">
+  <div id="report_controls">
   <h1>Bug Report</h1>
+  <div id="button_div">
+    <%= button_to "Edit", edit_bug_path, :class => 'btn-primary show_button', method: :get %>
+    <%= button_to "Delete", @bug, method: :delete, class: 'btn-primary show_button' %>
 
+  </div>
+</div>
+<div id="report_content">
   <table id="bug_table">
     <tr>
       <td><b>Title:</b> <%= @bug.title %></td>
+      <% if @bug.picture? %>
       <td><b>Screenshot of Problem</b></td>
+      <% end %>
     </tr>
     <tr>
       <td><b>Status:</b> <%= @bug.status %></td>
+      <% if @bug.picture? %>
       <td rowspan="6"><%= image_tag @bug.picture.url if @bug.picture? %></td>
+      <% end %>
     </tr>
     <tr>
       <td><b>Reporter:</b> <%= User.find(@bug.user_id).name %></td>
@@ -26,4 +37,5 @@
       <td><%= @bug.actual_outcome%></td>
     </tr>
   </table>
+</div>
 </div>
