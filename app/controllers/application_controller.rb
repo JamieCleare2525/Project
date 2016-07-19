@@ -3,12 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  protected
 
-        def configure_permitted_parameters
-
-            devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :role, :password])
-            devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :role, :password, :current_password])
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :role,
+                                                       :password])
+    devise_parameter_sanitizer.permit(:account_update,
+                                      keys: [:name, :email, :role, :password,
+                                             :current_password])
   end
-      
 end

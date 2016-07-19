@@ -6,6 +6,12 @@
     </tr>
     <tr>
       <td><p><b>Status:</b> <%= b.status%></p></td>
+      <td><p><b>Screenshot:</b> <%if b.picture?%>
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <% else %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </p></td>
     </tr>
     <tr>
       <td colspan="2"><p><b>Expected Outcome:</b> </td>

@@ -8,6 +8,7 @@
     </tr>
     <tr>
       <td><b>Status:</b> <%= @bug.status %></td>
+      <td rowspan="6"><%= image_tag @bug.picture.url if @bug.picture? %></td>
     </tr>
     <tr>
       <td><b>Reporter:</b> <%= User.find(@bug.user_id).name %></td>
