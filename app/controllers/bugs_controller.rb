@@ -51,7 +51,8 @@ class BugsController < ApplicationController
       :actual_outcome,
       :status,
       :url,
-      :picture
+      :picture,
+      :file
     )
   end
 end

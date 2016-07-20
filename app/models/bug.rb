@@ -10,7 +10,8 @@ class Bug < ApplicationRecord
   validates :user_id, presence: true
   validate :picture_size
 
-  has_attached_file :csv
+  has_attached_file :file, default_url: '/files/:style/missing.doc'
+  validates_attachment :file, content_type: { content_type: ['text/csv'] }
 
   def self.search(search)
     where('status LIKE ?', "%#{search}%")

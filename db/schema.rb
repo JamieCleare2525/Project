@@ -10,18 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720134230) do
+ActiveRecord::Schema.define(version: 20160720151248) do
 
   create_table "bugs", force: :cascade do |t|
     t.string   "title"
     t.text     "expected_outcome"
-    t.string   "status",           default: "reported"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "status",            default: "reported"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "user_id"
     t.text     "actual_outcome"
     t.string   "picture"
     t.string   "url"
+    t.         "file"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
     t.index ["user_id"], name: "index_bugs_on_user_id"
   end
 

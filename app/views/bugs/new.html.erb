@@ -37,8 +37,11 @@
   <h2>Optional Fields</h2>
 </br>
 
-<p>Please select a screenshot of the problem: </p>
+<p>Please enter a screenshot of the problem: </p>
 <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
+<p>Please enter the CSV file you were trying to upload: </p>
+<%= f.file_field :file %>
 
 
 <%= f.submit "Report a Bug", class: "btn btn-primary" %>
