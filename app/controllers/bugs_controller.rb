@@ -50,6 +50,7 @@ class BugsController < ApplicationController
       :expected_outcome,
       :actual_outcome,
       :status,
+      :url,
       :picture
     )
   end

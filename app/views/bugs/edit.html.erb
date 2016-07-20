@@ -22,14 +22,14 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
 
-    <%= f.label :expected_outcome %>
+    <p>This is what I expected to happen:  </p>
     <%= f.text_area :expected_outcome, class: 'form-control' %></br>
 
-    <%= f.label :actual_outcome %>
+    <p>This is what actually happened: </p>
     <%= f.text_area :actual_outcome, class: 'form-control' %></br>
 
-    <!--<%= f.label :status %>
-    <%= f.text_field :status, class: 'form-control' %>-->
+    <p>Please enter the URL where the problem occured: </p>
+    <%= f.text_field :url, class: 'form-control' %>
 
     <%= f.label :status %>
     <%= f.select :status, [['Reported', 'reported'], ['Resolved','resolved'],

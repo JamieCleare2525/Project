@@ -36,6 +36,13 @@
     <tr>
       <td><%= @bug.actual_outcome%></td>
     </tr>
+    <tr>
+      <td><b>URL where problem occurred:</b> </td>
+    </tr>
+    <tr>
+      <td><%= link_to @bug.url, @bug.url %></td>
+    </tr>
+  
   </table>
 </div>
 </div>

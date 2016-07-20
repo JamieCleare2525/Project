@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719075231) do
+ActiveRecord::Schema.define(version: 20160720134230) do
 
   create_table "bugs", force: :cascade do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160719075231) do
     t.integer  "user_id"
     t.text     "actual_outcome"
     t.string   "picture"
+    t.string   "url"
     t.index ["user_id"], name: "index_bugs_on_user_id"
   end
 

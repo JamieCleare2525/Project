@@ -8,6 +8,8 @@ gem 'haml'
 gem 'rubocop'
 # uploads images
 gem 'carrierwave'
+# for uploading and downloading files
+gem 'paperclip'
 # used to resize and modify images
 gem 'mini_magick'
 gem 'fog'

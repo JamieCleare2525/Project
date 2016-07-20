@@ -18,29 +18,39 @@
     </div>
     <% end %>
 
+    <h2>Required Fields</h2>
+  </br>
 
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
 
-    <%= f.label :expected_outcome %>
-    <%= f.text_area :expected_outcome, class: 'form-control' %></br>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
 
-    <%= f.label :actual_outcome %>
-    <%= f.text_area :actual_outcome, class: 'form-control' %></br>
+  <p>This is what I expected to happen:  </p>
+  <%= f.text_area :expected_outcome, class: 'form-control' %></br>
 
-    <p>Screenshot</p>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  <p>This is what actually happened: </p>
+  <%= f.text_area :actual_outcome, class: 'form-control' %></br>
 
-    <%= f.submit "Report a Bug", class: "btn btn-primary" %>
-    <% end %>
-    
-    <script type="text/javascript">
-    $('#bug_picture').bind('change', function() {
-      var size_in_megabytes = this.files[0].size/1024/1024;
-      if (size_in_megabytes > 5) {
-        alert('Maximum file size is 5MB. Please choose a smaller file.');
-      }
-    });
-    </script>
-  </div>
+  <p>Please enter the URL where the problem occured: </p>
+  <%= f.text_field :url, class: 'form-control' %>
+
+  <h2>Optional Fields</h2>
+</br>
+
+<p>Please select a screenshot of the problem: </p>
+<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
+
+<%= f.submit "Report a Bug", class: "btn btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+$('#bug_picture').bind('change', function() {
+  var size_in_megabytes = this.files[0].size/1024/1024;
+  if (size_in_megabytes > 5) {
+    alert('Maximum file size is 5MB. Please choose a smaller file.');
+  }
+});
+</script>
+</div>
 </div>
