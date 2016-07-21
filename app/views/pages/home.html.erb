@@ -14,10 +14,15 @@
     <% end %>
   </div>
 
-  <div>
-    <button type="button" class="btn">
-      <%= link_to "Link to Trello", link_to_trello_path %>
-    </button>
+  <% if current_user.role == "bug manager" %>
+    <% if current_user.trello_token == "N/A" %>
+      <div>
+        <button type="button" class="btn">
+          <%= link_to "Link to Trello", link_to_trello_path %>
+        </button>
+      </div>
+    <% end %>
+  <% end %>
 
 
 

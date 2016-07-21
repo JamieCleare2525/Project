@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   def add_token_to_user
-    Rails.logger.debug params[:token]
+    Rails.logger.debug "Token ================>" +params[:token]
     @users = User.all
     @users.each do |u|
       if u.role == "bug manager"
