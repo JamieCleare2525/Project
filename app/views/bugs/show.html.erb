@@ -2,8 +2,12 @@
   <div id="report_controls">
   <h1>Bug Report</h1>
   <div id="button_div">
+    <% if current_user.role == "bug manager" %>
     <%= button_to "Edit", edit_bug_path, :class => 'btn-primary show_button', method: :get %>
+    <% end %>
+    <% if current_user.name == User.find(@bug.user_id).name || current_user.role == "bug manager"%>
     <%= button_to "Delete", @bug, method: :delete, class: 'btn-primary show_button' %>
+    <% end %>
 
   </div>
 </div>
