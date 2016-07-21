@@ -25,17 +25,24 @@
   <%= f.label :title %>
   <%= f.text_field :title, class: 'form-control' %>
 
-  <p>This is what I expected to happen:  </p>
+  <p>What did you expect to happen:  </p>
   <%= f.text_area :expected_outcome, class: 'form-control' %></br>
 
-  <p>This is what actually happened: </p>
+  <p>What actually happened: </p>
   <%= f.text_area :actual_outcome, class: 'form-control' %></br>
+
+  <p>How did you attempt to solve the problem: </p>
+  <%= f.text_area :solution_attempt, class: 'form-control',
+   placeholder: 'example: clicked button X' %></br>
 
   <p>Please enter the URL where the problem occured: </p>
   <%= f.text_field :url, class: 'form-control' %>
 
   <h2>Optional Fields</h2>
 </br>
+
+<p>Please enter any other useful information: (Such as cohort, coachee, coach, etc.) </p>
+<%= f.text_area :other_info, class: 'form-control' %></br>
 
 <p>Please enter a screenshot of the problem: </p>
 <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

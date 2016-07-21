@@ -3,6 +3,8 @@ class Bug < ApplicationRecord
   validates :title, presence: true
   validates :expected_outcome, presence: true, length: { maximum: 255 }
   validates :actual_outcome, presence: true, length: { maximum: 255 }
+  validates :solution_attempt, presence: true, length: { maximum: 255 }
+  validates :other_info, length: { maximum: 255 }
   validates :status, presence: true
   VALID_URL_REGEX = /(https?:\/\/|localhost:)[\S]+\.[\S]+/i
   validates :url, presence: true, format: { with: VALID_URL_REGEX }

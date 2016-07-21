@@ -41,17 +41,32 @@
       <td><%= @bug.actual_outcome%></td>
     </tr>
     <tr>
+      <td><b>Attempted Solution:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.solution_attempt%></td>
+    </tr>
+    <tr>
+      <td><b>Other Information:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.other_info%></td>
+    </tr>
+
+    <tr>
       <td><b>URL where problem occurred:</b> </td>
     </tr>
     <tr>
       <td><%= link_to @bug.url, @bug.url %></td>
     </tr>
+    <% if @bug.file? %>
     <tr>
       <td><b>CSV uploaded where problem occurred:</b> </td>
     </tr>
     <tr>
       <td><%= link_to @bug.file.url, @bug.file.url(:original, false) %></td>
     </tr>
+    <% end %>
 
   </table>
 </div>
