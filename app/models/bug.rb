@@ -4,7 +4,8 @@ class Bug < ApplicationRecord
   validates :expected_outcome, presence: true, length: { maximum: 255 }
   validates :actual_outcome, presence: true, length: { maximum: 255 }
   validates :status, presence: true
-  validates :url, presence: true
+  VALID_URL_REGEX = /(https?:\/\/|localhost:)[\S]+\.[\S]+/i
+  validates :url, presence: true, format: { with: VALID_URL_REGEX }
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
