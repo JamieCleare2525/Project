@@ -1,10 +1,20 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'rails', '~> 5.0.0'
 # used for instant user logins
 gem 'devise'
 gem 'haml'
 # used to check code correctness
+
+# Used for accessing extenral API's
+gem 'rest-client', '~> 1.8'
+# Rest Client's dependencies
+gem 'http-cookie', '~> 1.0', '>= 1.0.2'
+gem 'mime-types', '2.99.2'
+gem 'netrc', '~> 0.11.0'
+
 gem 'rubocop'
 # uploads images
 gem 'carrierwave'

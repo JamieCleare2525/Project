@@ -3,6 +3,20 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+
+  def add_token_to_user
+    Rails.logger.debug params[:token]
+    @users = User.all
+    @users.each do |u|
+      if u.role == "bug manager"
+        u.trello_token = params[:token]
+        if u.save
+          render json: {status: "success"}.to_json
+        end
+      end
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -12,4 +26,6 @@ class ApplicationController < ActionController::Base
                                       keys: [:name, :email, :role, :password,
                                              :current_password])
   end
+
+
 end
