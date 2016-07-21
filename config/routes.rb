@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/link_to_trello', to: 'pages#link_to_trello', as: 'link_to_trello'
   get '/add_token_to_user', to: 'application#add_token_to_user'
   post '/add_token_to_user', to: 'application#add_token_to_user'
+
+  post '/card_to_trello', to: 'bugs#card_to_trello', as: 'card_to_trello'
   resources :bugs
 
   devise_for :users

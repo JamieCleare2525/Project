@@ -42,6 +42,22 @@ class BugsController < ApplicationController
     redirect_to root_path
   end
 
+  def card_to_trello
+    @bug = Bug.find(params[:id])
+    board = get_trello_user_boards
+    list = get_trello_board_list(board)
+    description = "Expected Outcome: \n #{@bug.expected_outcome} \n" \
+      "Actual Outcome: \n #{@bug.actual_outcome} \n Reported By: \n" \
+      "#{User.find(@bug.user_id).name}"
+    RestClient.post "https://api.trello.com/1/cards?key=#{ENV['APPKEY']}&" \
+      "token=#{current_user.trello_token}",
+      {'name' => @bug.title,
+       "desc" => description,
+       "idList" => list.first["id"],
+       "due" => "null"}
+    redirect_to root_path
+  end
+
   private
 
   def bug_params
@@ -56,5 +72,20 @@ class BugsController < ApplicationController
       :picture,
       :file
     )
+  end
+
+  def get_trello_user_boards
+    Rails.logger.debug (("*" * 10) + ENV['APPKEY'] + " #{current_user.trello_token}")
+    response = RestClient.get "https://api.trello.com/1/members/jamiecleare/boards?key=#{ENV['APPKEY']}&token=#{current_user.trello_token}"
+    data = JSON.parse(response)
+    Rails.logger.debug response
+    #ßRails.logger.debug(data.second)
+    board = data.second
+  end
+
+  def get_trello_board_list(board)
+    response = RestClient.get "https://api.trello.com/1/boards/#{board['id']}/lists?key=#{ENV['APPKEY']}&token=#{current_user.trello_token}"
+    Rails.logger.debug(response)
+    data = JSON.parse(response)
   end
 end

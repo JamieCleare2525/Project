@@ -5,16 +5,18 @@ class ApplicationController < ActionController::Base
 
 
   def add_token_to_user
-    Rails.logger.debug "Token ================>" +params[:token]
+    Rails.logger.debug "Token ================>" +params[:token] if params[:token]
     @users = User.all
     @users.each do |u|
       if u.role == "bug manager"
         u.trello_token = params[:token]
-        if u.save
-          render json: {status: "success"}.to_json
+        unless u.save
+          render json: {status: "failure"}.to_json
+          return
         end
       end
     end
+    render json: {status: "success"}.to_json
   end
 
   protected
