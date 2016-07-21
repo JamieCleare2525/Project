@@ -10,18 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160721093117) do
+=======
+ActiveRecord::Schema.define(version: 20160721101712) do
+>>>>>>> 9d8b5b99f3c259d94d231a294296984689a5fbff
 
   create_table "bugs", force: :cascade do |t|
     t.string   "title"
     t.text     "expected_outcome"
-    t.string   "status",           default: "reported"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "status",            default: "reported"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "user_id"
     t.text     "actual_outcome"
     t.string   "picture"
     t.string   "url"
+    t.         "file"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.text     "solution_attempt"
+    t.text     "other_info"
     t.index ["user_id"], name: "index_bugs_on_user_id"
   end
 

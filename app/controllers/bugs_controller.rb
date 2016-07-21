@@ -49,9 +49,12 @@ class BugsController < ApplicationController
       :title,
       :expected_outcome,
       :actual_outcome,
+      :solution_attempt,
       :status,
       :url,
-      :picture
+      :other_info,
+      :picture,
+      :file
     )
   end
 end

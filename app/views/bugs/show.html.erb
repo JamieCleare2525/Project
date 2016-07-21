@@ -2,8 +2,12 @@
   <div id="report_controls">
   <h1>Bug Report</h1>
   <div id="button_div">
+    <% if current_user.role == "bug manager" %>
     <%= button_to "Edit", edit_bug_path, :class => 'btn-primary show_button', method: :get %>
+    <% end %>
+    <% if current_user.name == User.find(@bug.user_id).name || current_user.role == "bug manager"%>
     <%= button_to "Delete", @bug, method: :delete, class: 'btn-primary show_button' %>
+    <% end %>
 
   </div>
 </div>
@@ -37,12 +41,33 @@
       <td><%= @bug.actual_outcome%></td>
     </tr>
     <tr>
+      <td><b>Attempted Solution:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.solution_attempt%></td>
+    </tr>
+    <tr>
+      <td><b>Other Information:</b> </td>
+    </tr>
+    <tr>
+      <td><%= @bug.other_info%></td>
+    </tr>
+
+    <tr>
       <td><b>URL where problem occurred:</b> </td>
     </tr>
     <tr>
       <td><%= link_to @bug.url, @bug.url %></td>
     </tr>
-  
+    <% if @bug.file? %>
+    <tr>
+      <td><b>CSV uploaded where problem occurred:</b> </td>
+    </tr>
+    <tr>
+      <td><%= link_to @bug.file.url, @bug.file.url(:original, false) %></td>
+    </tr>
+    <% end %>
+
   </table>
 </div>
 </div>
