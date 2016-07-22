@@ -8,16 +8,15 @@ class ApplicationController < ActionController::Base
     Rails.logger.debug "Token ================>" +params[:token] if params[:token]
     @users = User.all
     @users.each do |u|
-      if u.role == "bug manager"
         u.trello_token = params[:token]
         unless u.save
           render json: {status: "failure"}.to_json
           return
-        end
       end
     end
     render json: {status: "success"}.to_json
   end
+
 
   protected
 

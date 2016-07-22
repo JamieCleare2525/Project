@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   post '/card_to_trello', to: 'bugs#card_to_trello', as: 'card_to_trello'
   resources :bugs
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
