@@ -8,7 +8,7 @@
     <% if current_user.name == User.find(@bug.user_id).name || current_user.role == "bug manager"%>
     <%= button_to "Delete", @bug, method: :delete, class: 'btn-primary show_button' %>
     <% end %>
-    <%= button_to "Add to Trello", card_to_trello_path, { params: { id: @bug.id }, class: 'btn-primary' } %>
+    <!--<%= button_to "Add to Trello", card_to_trello_path, { params: { id: @bug.id }, class: 'btn-primary' } %>-->
 
   </div>
 </div>

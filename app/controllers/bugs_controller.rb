@@ -20,6 +20,7 @@ class BugsController < ApplicationController
     @bug.user = current_user
 
     if @bug.save
+      card_to_trello(@bug)
       redirect_to root_url
     else
       render 'new'
@@ -42,21 +43,7 @@ class BugsController < ApplicationController
     redirect_to root_path
   end
 
-  def card_to_trello
-    @bug = Bug.find(params[:id])
-    board = get_trello_user_boards
-    list = get_trello_board_list(board)
-    description = "Expected Outcome: \n #{@bug.expected_outcome} \n" \
-      "Actual Outcome: \n #{@bug.actual_outcome} \n Reported By: \n" \
-      "#{User.find(@bug.user_id).name}"
-    RestClient.post "https://api.trello.com/1/cards?key=#{ENV['APPKEY']}&" \
-      "token=#{current_user.trello_token}",
-      {'name' => @bug.title,
-       "desc" => description,
-       "idList" => list.first["id"],
-       "due" => "null"}
-    redirect_to root_path
-  end
+
 
   private
 
@@ -87,5 +74,19 @@ class BugsController < ApplicationController
     response = RestClient.get "https://api.trello.com/1/boards/#{board['id']}/lists?key=#{ENV['APPKEY']}&token=#{current_user.trello_token}"
     Rails.logger.debug(response)
     data = JSON.parse(response)
+  end
+
+  def card_to_trello(bug)
+    board = get_trello_user_boards
+    list = get_trello_board_list(board)
+    description = "Expected Outcome: \n #{bug.expected_outcome} \n" \
+      "Actual Outcome: \n #{bug.actual_outcome} \n Reported By: \n" \
+      "#{User.find(bug.user_id).name}"
+    RestClient.post "https://api.trello.com/1/cards?key=#{ENV['APPKEY']}&" \
+      "token=#{current_user.trello_token}",
+      {'name' => bug.title,
+       "desc" => description,
+       "idList" => list.first["id"],
+       "due" => "null"}
   end
 end
